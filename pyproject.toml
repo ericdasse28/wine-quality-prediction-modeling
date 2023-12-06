@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "wine-quality-prediction-modeling"
+version = "0.1.0"
+description = "Building of a model that predicts the quality of a red wine on a scale of 0-10 based on some of its features as inputs"
+authors = ["Eric Dasse <christ.gououi@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "wine_quality_prediction_modeling"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.1.3"
+matplotlib = "^3.8.2"
+numpy = "^1.26.2"
+scikit-learn = "^1.3.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
