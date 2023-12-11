@@ -1,7 +1,12 @@
 # Wine Quality Prediction Modeling
 
-Implementation of a model that predicts the quality of a red wine on a scale of 0-10 given a set of physicochemical features of wine as inputs
-Dataset : [Wine Quality dataset](https://archive.ics.uci.edu/dataset/186/wine+quality)
+Implementation of a model that predicts the quality of a red wine on a scale of 0-10,
+given a set of physicochemical features of wine as inputs
+
+## Dataset
+
+The dataset used is the [Wine Quality dataset](https://archive.ics.uci.edu/dataset/186/wine+quality),
+provided the UCI Machine Learning repository.
 
 ## Data and model versioning
 
