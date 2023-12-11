@@ -2,7 +2,7 @@
 
 
 import pandas as pd
-from wine_quality_prediction_modeling.prepare import get_features
+from wine_quality_prediction_modeling import prepare
 
 
 def test_get_features():
@@ -24,7 +24,7 @@ def test_get_features():
         }
     )
 
-    actual_features = get_features(
+    actual_features = prepare.get_features_from_correlations(
         correlations=correlations, correlation_threshold=0.05
     )
 
