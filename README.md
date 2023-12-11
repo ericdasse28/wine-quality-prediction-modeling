@@ -33,3 +33,5 @@ You can also directly set _origin_ as the default DVC remote using the command:
 ```bash
 dvc remote default origin
 ```
+
+Hence, pushing becomes simpler: `dvc push`
