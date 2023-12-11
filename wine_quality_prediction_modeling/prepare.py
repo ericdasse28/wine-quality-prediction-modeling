@@ -17,8 +17,8 @@ def generate_train_and_test_data(
     test_data = pd.concat([X_test, y_test], axis=1)
 
     # Save training and test data
-    train_data.to_csv(prepared_data_dir / "train.csv")
-    test_data.to_csv(prepared_data_dir / "test.csv")
+    train_data.to_csv(prepared_data_dir / "train.csv", index=False)
+    test_data.to_csv(prepared_data_dir / "test.csv", index=False)
 
 
 def get_features(raw_df: pd.DataFrame, correlation_threshold: float):
