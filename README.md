@@ -5,4 +5,4 @@ Dataset : [Wine Quality dataset](https://archive.ics.uci.edu/dataset/186/wine+qu
 
 ## Data and model versioning
 
-We use DVC to version data and model.
+We use DVC to version data and the ML model.
