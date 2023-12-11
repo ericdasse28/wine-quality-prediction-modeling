@@ -21,11 +21,10 @@ def generate_train_and_test_data(
     test_data.to_csv(prepared_data_dir / "test.csv", index=False)
 
 
-def get_features(raw_df: pd.DataFrame, correlation_threshold: float):
-    """Output features whose correlation is above a threshold
-    value."""
-
-    correlations = raw_df.corr()["quality"].drop("quality")
+def get_features_from_correlations(
+    correlations: pd.Series, correlation_threshold: float
+) -> list[str]:
+    """Get features from correlations."""
 
     abs_corrs = correlations.abs()
     high_correlations = list(
@@ -33,6 +32,20 @@ def get_features(raw_df: pd.DataFrame, correlation_threshold: float):
     )
 
     return high_correlations
+
+
+def get_features(
+    raw_df: pd.DataFrame,
+    correlation_threshold: float,
+) -> list[str]:
+    """Output features whose correlation is above a threshold
+    value."""
+
+    correlations = raw_df.corr()["quality"].drop("quality")
+
+    return get_features_from_correlations(
+        correlations, correlation_threshold=correlation_threshold
+    )
 
 
 def prepare_data(raw_data_file_path: Path, prepared_data_dir_path: Path):
