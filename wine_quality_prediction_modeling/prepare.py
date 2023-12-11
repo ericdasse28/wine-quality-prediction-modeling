@@ -1,4 +1,4 @@
-"""Data preparation for training related functions."""
+"""Data preparation module."""
 
 from pathlib import Path
 import pandas as pd
