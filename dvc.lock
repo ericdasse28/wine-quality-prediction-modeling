@@ -1,0 +1,55 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python3 wine_quality_prediction_modeling/prepare.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: 4d97193039d333d4eb20976632216d26.dir
+      size: 351930
+      nfiles: 3
+    - path: wine_quality_prediction_modeling/prepare.py
+      hash: md5
+      md5: faf90829a0565081eb56af8d560662e4
+      size: 2180
+    outs:
+    - path: data/prepared/test.csv
+      hash: md5
+      md5: 432881526362cbc90fb88db2daa62631
+      size: 21512
+    - path: data/prepared/train.csv
+      hash: md5
+      md5: cea42a49c271cffbc157523cd7b49d2c
+      size: 64173
+  train:
+    cmd: python3 wine_quality_prediction_modeling/train.py
+    deps:
+    - path: data/prepared/train.csv
+      hash: md5
+      md5: cea42a49c271cffbc157523cd7b49d2c
+      size: 64173
+    - path: wine_quality_prediction_modeling/train.py
+      hash: md5
+      md5: b3e40c88ac41d8fd1bd0e09d9c47f219
+      size: 995
+    outs:
+    - path: model/wine_quality_model.joblib
+      hash: md5
+      md5: dd84cd918c565165b1f85935668b4946
+      size: 1176
+  evaluate:
+    cmd: python3 wine_quality_prediction_modeling/evaluate.py
+    deps:
+    - path: model/wine_quality_model.joblib
+      hash: md5
+      md5: dd84cd918c565165b1f85935668b4946
+      size: 1176
+    - path: wine_quality_prediction_modeling/evaluate.py
+      hash: md5
+      md5: fdb2db275825dcf54ff02c4a8e3815d6
+      size: 1095
+    outs:
+    - path: metrics/metrics.json
+      hash: md5
+      md5: cff366867e7575e355a2962e5a2375f1
+      size: 89

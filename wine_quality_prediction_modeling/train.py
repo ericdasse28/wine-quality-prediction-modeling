@@ -32,7 +32,7 @@ def main():
     # Save model to model dir
     model_dir = Path(__file__).parent.parent / "model"
     model_dir.mkdir(exist_ok=True)
-    model_dump = model_dir / "wine_quality_predictor.joblib"
+    model_dump = model_dir / "wine_quality_model.joblib"
     joblib.dump(trained_model, model_dump)
 
 
