@@ -1,5 +1,7 @@
 name: CML & DVC
 on: [push]
+permissions:
+  pull-requests: write
 jobs:
   train-and-report:
     runs-on: ubuntu-latest
