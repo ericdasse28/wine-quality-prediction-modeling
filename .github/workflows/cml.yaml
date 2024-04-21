@@ -22,7 +22,7 @@ jobs:
       - name: Train model
         run: |
           dvc pull data
-          poetry install --only main
+          pip install -r requirements.txt
           dvc repro
       - name: Create CML report
         run: |
