@@ -36,10 +36,10 @@ jobs:
           poetry install --only main
           dvc repro
       - name: Create CML report
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Compare metrics to main
           dvc metrics diff --md >> report.md
           cat report.md
           cml comment create report.md
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
