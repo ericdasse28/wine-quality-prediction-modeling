@@ -6,6 +6,8 @@ jobs:
     # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - name: Install system dependencies
         run: |
           sudo apt update
