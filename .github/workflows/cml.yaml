@@ -19,6 +19,7 @@ jobs:
         with:
           python-version: 3.12.3
           poetry-version: 1.8.1
+          install-args: --only main
       - uses: iterative/setup-cml@v1
       - uses: iterative/setup-dvc@v1
       - name: Setup DagsHub DVC remote
@@ -28,7 +29,6 @@ jobs:
       - name: Train model
         run: |
           dvc pull -r origin
-          poetry install --only main
           dvc repro
       - name: Commit changes in dvc.lock
         uses: stefanzweifel/git-auto-commit-action@v5
