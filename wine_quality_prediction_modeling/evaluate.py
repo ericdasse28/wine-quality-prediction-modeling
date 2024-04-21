@@ -21,7 +21,7 @@ def main():
     labels = test_data["quality"]
 
     model_dir = Path(__file__).parent.parent / "model"
-    model_file = model_dir / "wine_quality_predictor.joblib"
+    model_file = model_dir / "wine_quality_model.joblib"
     logger.info(f"Loading the model from {model_file}...")
     model = joblib.load(model_file)
     logger.info("Performing predictions...")
