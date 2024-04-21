@@ -6,9 +6,10 @@ jobs:
     container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v5
+      - uses: packetcoders/action-setup-cache-python-poetry@main
         with:
-          python-version: "3.x"
+          python-version: 3.12.3
+          poetry-version: 1.8.1
       - uses: iterative/setup-cml@v1
       - uses: iterative/setup-dvc@v1
       #   - uses: Gr1N/setup-poetry@v8
