@@ -33,6 +33,7 @@ jobs:
       - name: Train model
         run: |
           dvc pull -r origin
+          ls | grep poetry.lock
           poetry install --only main
           dvc repro
       - name: Create CML report
