@@ -32,6 +32,6 @@ jobs:
         run: |
           # Compare metrics to main
           cat metrics/metrics.json >> report.md
-          cml comment create report.md
+        #   cml comment create report.md
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
