@@ -1,7 +1,7 @@
 schema: '2.0'
 stages:
   prepare:
-    cmd: python3 wine_quality_prediction_modeling/prepare.py
+    cmd: poetry run python3 wine_quality_prediction_modeling/prepare.py
     deps:
     - path: data/raw
       hash: md5
@@ -10,8 +10,8 @@ stages:
       nfiles: 3
     - path: wine_quality_prediction_modeling/prepare.py
       hash: md5
-      md5: faf90829a0565081eb56af8d560662e4
-      size: 2180
+      md5: 55dfefbb8dfa11a7a0a776a743671a26
+      size: 2468
     outs:
     - path: data/prepared/test.csv
       hash: md5
@@ -22,7 +22,7 @@ stages:
       md5: cea42a49c271cffbc157523cd7b49d2c
       size: 64173
   train:
-    cmd: python3 wine_quality_prediction_modeling/train.py
+    cmd: poetry run python3 wine_quality_prediction_modeling/train.py
     deps:
     - path: data/prepared/train.csv
       hash: md5
@@ -30,15 +30,15 @@ stages:
       size: 64173
     - path: wine_quality_prediction_modeling/train.py
       hash: md5
-      md5: b3e40c88ac41d8fd1bd0e09d9c47f219
-      size: 995
+      md5: 8f20fa092c84de6d00c67cfe5d17da65
+      size: 1182
     outs:
     - path: model/wine_quality_model.joblib
       hash: md5
       md5: dd84cd918c565165b1f85935668b4946
       size: 1176
   evaluate:
-    cmd: python3 wine_quality_prediction_modeling/evaluate.py
+    cmd: poetry run python3 wine_quality_prediction_modeling/evaluate.py
     deps:
     - path: model/wine_quality_model.joblib
       hash: md5
@@ -46,8 +46,8 @@ stages:
       size: 1176
     - path: wine_quality_prediction_modeling/evaluate.py
       hash: md5
-      md5: fdb2db275825dcf54ff02c4a8e3815d6
-      size: 1095
+      md5: a03fd68466c2a75eb9ea15768c7f3b21
+      size: 1393
     outs:
     - path: metrics/metrics.json
       hash: md5

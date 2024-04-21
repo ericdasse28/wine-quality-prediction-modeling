@@ -3,6 +3,7 @@
 from pathlib import Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from loguru import logger
 
 
 def generate_train_and_test_data(
@@ -53,17 +54,21 @@ def prepare_data(raw_data_file_path: Path, prepared_data_dir_path: Path):
 
     raw_data = pd.read_csv(raw_data_file_path, sep=";")
 
+    logger.info("Selecting features...")
     features = get_features(raw_data, correlation_threshold=0.05)
 
     X = raw_data[features]
     y = raw_data["quality"]
 
     # Generate CSV files for training and test data
+    logger.info("Generating CSV files for training and test data...")
     generate_train_and_test_data(
         X,
         y,
         prepared_data_dir=prepared_data_dir_path,
     )
+
+    logger.success("Data preparation successful!")
 
 
 def main():
@@ -78,6 +83,9 @@ red.csv"
     # Create prepared directory if it does not exist already
     prepared_data_dir_path.mkdir(exist_ok=True)
 
+    logger.info(
+        f"Running data preparation on raw data at {raw_data_file_path}...",
+    )
     prepare_data(raw_data_file_path, prepared_data_dir_path)
 
 

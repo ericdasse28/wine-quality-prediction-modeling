@@ -1,6 +1,6 @@
 stages:
   prepare:
-    cmd: python3 wine_quality_prediction_modeling/prepare.py
+    cmd: poetry run python3 wine_quality_prediction_modeling/prepare.py
     deps:
     - data/raw
     - wine_quality_prediction_modeling/prepare.py
@@ -8,14 +8,14 @@ stages:
     - data/prepared/test.csv
     - data/prepared/train.csv
   train:
-    cmd: python3 wine_quality_prediction_modeling/train.py
+    cmd: poetry run python3 wine_quality_prediction_modeling/train.py
     deps:
     - data/prepared/train.csv
     - wine_quality_prediction_modeling/train.py
     outs:
     - model/wine_quality_model.joblib
   evaluate:
-    cmd: python3 wine_quality_prediction_modeling/evaluate.py
+    cmd: poetry run python3 wine_quality_prediction_modeling/evaluate.py
     deps:
     - model/wine_quality_model.joblib
     - wine_quality_prediction_modeling/evaluate.py
