@@ -19,9 +19,10 @@ jobs:
       #       plugins: "poetry-dynamic-versioning==1.2.0"
       #       cache-venv: "true"
       #       cache-poetry: "true"
-      - name: Show python version
-        run: |
-          python3 --version
+      - name: Setup poetry
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: "1.8.1"
       - name: Setup DagsHub DVC remote
         run: |
           dvc remote modify origin --local access_key_id ${{ secrets.DAGSHUB_TOKEN }}
@@ -29,7 +30,7 @@ jobs:
       - name: Train model
         run: |
           dvc pull -r origin
-          pip install -r requirements.txt
+          poetry install --only main
           dvc repro
       - name: Create CML report
         run: |
