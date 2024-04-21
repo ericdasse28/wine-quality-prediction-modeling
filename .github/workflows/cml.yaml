@@ -42,6 +42,4 @@ jobs:
           # Compare metrics to main
           git fetch --depth=1 origin main:main
           dvc metrics diff --md main >> report.md
-          cat report.md
-          echo '![](./plot.png "Training Loss")' >> report.md
           cml comment create report.md
