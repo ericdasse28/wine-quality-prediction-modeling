@@ -12,13 +12,13 @@ jobs:
       - uses: iterative/setup-cml@v1
       - uses: iterative/setup-dvc@v1
       #   - uses: Gr1N/setup-poetry@v8
-      - name: Setup Poetry
-        uses: pronovic/setup-poetry@v2
-        with:
-          version: "1.8.0"
-          plugins: "poetry-dynamic-versioning==1.2.0"
-          cache-venv: "true"
-          cache-poetry: "true"
+      #   - name: Setup Poetry
+      #     uses: pronovic/setup-poetry@v2
+      #     with:
+      #       version: "1.8.0"
+      #       plugins: "poetry-dynamic-versioning==1.2.0"
+      #       cache-venv: "true"
+      #       cache-poetry: "true"
       - name: Train model
         run: |
           dvc pull data
