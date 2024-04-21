@@ -19,6 +19,9 @@ jobs:
       #       plugins: "poetry-dynamic-versioning==1.2.0"
       #       cache-venv: "true"
       #       cache-poetry: "true"
+      - name: Show python version
+        run: |
+          python --version
       - name: Setup DagsHub DVC remote
         run: |
           dvc remote modify origin --local access_key_id ${{ secrets.DAGSHUB_TOKEN }}
