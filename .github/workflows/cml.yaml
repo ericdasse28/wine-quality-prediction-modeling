@@ -38,7 +38,7 @@ jobs:
       - name: Create CML report
         run: |
           # Compare metrics to main
-          dvc metrics diff origin/main --md >> report.md
+          dvc metrics diff --md >> report.md
           cml comment create report.md
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
