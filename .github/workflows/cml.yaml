@@ -31,13 +31,7 @@ jobs:
       - name: Create CML report
         run: |
           # Compare metrics to main
-          git fetch --depth=1 origin main:main
-          dvc metrics diff --show-md main >> report.md
-          # Plot training loss function diff
-          dvc plots diff \
-            --target loss.csv --show-vega main > vega.json
-          vl2png vega.json > plot.png
-          echo '![](./plot.png "Training Loss")' >> report.md
+          cat metrics/metrics.json >> report.md
           cml comment create report.md
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
