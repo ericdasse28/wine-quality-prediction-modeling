@@ -3,7 +3,6 @@ on: [push]
 jobs:
   train-and-report:
     runs-on: ubuntu-latest
-    # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v3
         with:
@@ -18,14 +17,6 @@ jobs:
           poetry-version: 1.8.1
       - uses: iterative/setup-cml@v1
       - uses: iterative/setup-dvc@v1
-      #   - uses: Gr1N/setup-poetry@v8
-      #   - name: Setup Poetry
-      #     uses: pronovic/setup-poetry@v2
-      #     with:
-      #       version: "1.8.0"
-      #       plugins: "poetry-dynamic-versioning==1.2.0"
-      #       cache-venv: "true"
-      #       cache-poetry: "true"
       - name: Setup DagsHub DVC remote
         run: |
           dvc remote modify origin --local access_key_id ${{ secrets.DAGSHUB_TOKEN }}
