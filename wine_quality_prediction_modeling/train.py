@@ -38,6 +38,8 @@ def main():
     logger.info(f"Saving model to {model_dump}...")
     joblib.dump(trained_model, model_dump)
 
+    logger.success("Training successful!")
+
 
 if __name__ == "__main__":
     main()
