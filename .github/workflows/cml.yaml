@@ -19,6 +19,10 @@ jobs:
       #       plugins: "poetry-dynamic-versioning==1.2.0"
       #       cache-venv: "true"
       #       cache-poetry: "true"
+      - name: Setup DagsHub DVC remote
+        run: |
+          dvc remote modify origin --local access_key_id ${{ secrets.DAGSHUB_TOKEN }}
+          dvc remote modify origin --local secret_access_key ${{ secrets.DAGSHUB_TOKEN }}
       - name: Train model
         run: |
           dvc pull -r origin
