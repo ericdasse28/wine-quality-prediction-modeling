@@ -46,10 +46,5 @@ stages:
       size: 1177
     - path: wine_quality_prediction_modeling/evaluate.py
       hash: md5
-      md5: 7a2d88c4ad17a60f00018d6cbf4c2d24
-      size: 1609
-    outs:
-    - path: metrics/metrics.json
-      hash: md5
-      md5: cff366867e7575e355a2962e5a2375f1
-      size: 89
+      md5: d97158fe59dde6fc31861a1b0e34eac8
+      size: 1250
