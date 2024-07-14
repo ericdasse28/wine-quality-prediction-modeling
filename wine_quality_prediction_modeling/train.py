@@ -41,7 +41,11 @@ def main():
         logger.info(f"Saving model to {model_dump}...")
         joblib.dump(trained_model, model_dump)
 
-        live.log_artifact(str(model_dump), type="model")
+        live.log_artifact(
+            str(model_dump),
+            type="model",
+            name="wine_quality_model",
+        )
 
     logger.success("Training successful!")
 
