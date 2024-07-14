@@ -8,6 +8,7 @@ import numpy as np
 
 import pandas as pd
 from sklearn import metrics
+from dvclive import Live
 
 
 def main():
@@ -27,21 +28,25 @@ def main():
     logger.info("Performing predictions...")
     predictions = model.predict(X_test)
 
-    # Root Mean Squared Error
-    logger.info("Computing RMSE...")
-    rmse = np.sqrt(metrics.mean_squared_error(labels, predictions))
-    # Mean Absolute Error
-    logger.info("Computing MAE...")
-    mae = metrics.mean_absolute_error(labels, predictions)
-    computed_metrics = {
-        "Root Mean Squared Error": rmse,
-        "Mean Absolute Error": mae,
-    }
+    with Live() as live:
+        # Root Mean Squared Error
+        logger.info("Computing RMSE...")
+        rmse = np.sqrt(metrics.mean_squared_error(labels, predictions))
+        live.log_metric("Root Mean Squared Error", rmse)
 
-    # Save metrics
-    metrics_path = Path(__file__).parent.parent / "metrics/metrics.json"
-    logger.info(f"Saving metrics to {metrics_path}...")
-    metrics_path.write_text(json.dumps(computed_metrics))
+        # Mean Absolute Error
+        logger.info("Computing MAE...")
+        mae = metrics.mean_absolute_error(labels, predictions)
+        live.log_metric("Mean Absolute Error", mae)
+
+        # Save metrics
+        metrics_path = Path(__file__).parent.parent / "metrics/metrics.json"
+        logger.info(f"Saving metrics to {metrics_path}...")
+        computed_metrics = {
+            "Root Mean Squared Error": rmse,
+            "Mean Absolute Error": mae,
+        }
+        metrics_path.write_text(json.dumps(computed_metrics))
 
 
 if __name__ == "__main__":
