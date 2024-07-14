@@ -11,7 +11,6 @@ packages = [{ include = "wine_quality_prediction_modeling" }]
 python = "^3.10"
 pandas = "^2.2.2"
 matplotlib = "^3.9.1"
-numpy = "^2.0.0"
 scikit-learn = "^1.5.1"
 seaborn = "^0.13.2"
 dvc = "^3.51.2"
