@@ -1,6 +1,5 @@
 """Evaluate model."""
 
-import json
 from pathlib import Path
 import joblib
 from loguru import logger
@@ -38,15 +37,6 @@ def main():
         logger.info("Computing MAE...")
         mae = metrics.mean_absolute_error(labels, predictions)
         live.log_metric("Mean Absolute Error", mae)
-
-        # Save metrics
-        metrics_path = Path(__file__).parent.parent / "metrics/metrics.json"
-        logger.info(f"Saving metrics to {metrics_path}...")
-        computed_metrics = {
-            "Root Mean Squared Error": rmse,
-            "Mean Absolute Error": mae,
-        }
-        metrics_path.write_text(json.dumps(computed_metrics))
 
 
 if __name__ == "__main__":
