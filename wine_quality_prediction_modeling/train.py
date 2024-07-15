@@ -44,7 +44,9 @@ def main():
         live.log_artifact(
             str(model_dump),
             type="model",
-            name="wine_quality_model",
+            name="wine-quality-model",
+            desc="This is a regression model that predicts the \
+quality of a wine based on some physico-chemical indicators.",
         )
 
     logger.success("Training successful!")
